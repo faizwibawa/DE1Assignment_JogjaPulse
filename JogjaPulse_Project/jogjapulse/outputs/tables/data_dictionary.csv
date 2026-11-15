@@ -1,0 +1,52 @@
+file,kolom,tipe,deskripsi,satuan_catatan
+presence_cell500m_daily.csv,cell_id,string,ID sel grid 500 m: E{easting/500}_N{northing/500} pada UTM 49S,kunci sel
+presence_cell500m_daily.csv,x_min_utm,int,Easting sudut kiri-bawah sel,"meter, EPSG:32749"
+presence_cell500m_daily.csv,y_min_utm,int,Northing sudut kiri-bawah sel,"meter, EPSG:32749"
+presence_cell500m_daily.csv,centroid_lon,float,Bujur titik tengah sel,derajat WGS84
+presence_cell500m_daily.csv,centroid_lat,float,Lintang titik tengah sel,derajat WGS84
+presence_cell500m_daily.csv,date,date,Tanggal kalender (WIB),YYYY-MM-DD
+presence_cell500m_daily.csv,n_maids,int,Perangkat berbeda yang hadir di sel pada hari itu,≥5; tidak aditif
+presence_kapanewon_hourly.csv,kab_code,string,Kode kabupaten/kota,mis. 34.01
+presence_kapanewon_hourly.csv,kab_kota,string,Nama kabupaten/kota,5 nilai
+presence_kapanewon_hourly.csv,kapanewon_code,string,Kode kapanewon (kunci utama wilayah),mis. 34.01.01
+presence_kapanewon_hourly.csv,kapanewon,string,Nama kapanewon,JETIS ganda (Bantul & Kota)
+presence_kapanewon_hourly.csv,date,date,Tanggal (WIB),YYYY-MM-DD
+presence_kapanewon_hourly.csv,hour,int,Jam 0–23 (8 = 08.00–08.59 WIB),jam
+presence_kapanewon_hourly.csv,n_maids,int,Perangkat berbeda yang hadir di kapanewon pada jam itu,≥5; tidak aditif
+presence_kapanewon_hourly.csv,n_pings,int,Jumlah ping GPS pada jam itu,"aditif; volume data, bukan orang"
+home_maids_vs_population_kapanewon.csv,KAB_KOTA,string,Nama kabupaten/kota,
+home_maids_vs_population_kapanewon.csv,KEC_KAPN,string,Nama kapanewon,tanpa kode
+home_maids_vs_population_kapanewon.csv,n_users,int,"Perangkat yang rumah (lokasi malam tersering) di kapanewon ini, Des 2021–Apr 2022",perangkat
+home_maids_vs_population_kapanewon.csv,pop_actual,float,"Jumlah penduduk resmi (README: sumber BPS, tahun referensi tidak disebutkan)",jiwa
+home_maids_vs_population_kapanewon.csv,ratio,float,n_users / pop_actual,ukuran keterwakilan sampel
+validation_night_presence_kapanewon.csv,period,string,Periode validasi,Dec 2021 - Apr 2022 / Dec 2021 - Jan 2022
+validation_night_presence_kapanewon.csv,kab_kota,string,Nama kabupaten/kota,
+validation_night_presence_kapanewon.csv,kapanewon,string,Nama kapanewon,tanpa kode
+validation_night_presence_kapanewon.csv,night_presence,float,Rata-rata n_maids per jam (jam 00–05) atas baris terpublikasi,perangkat/jam
+validation_night_presence_kapanewon.csv,slots_published_pct,float,Persen slot malam (hari × 6 jam) yang terpublikasi,%
+validation_night_presence_kapanewon.csv,n_users,int,Sama dengan file home_maids,perangkat
+validation_night_presence_kapanewon.csv,pop_actual,float,Sama dengan file home_maids,jiwa
+tier1_summary.csv,pings_inside_diy_pct,float,Persen ping sumber di dalam DIY,%
+tier1_summary.csv,product,string,A_cell500m_daily atau B_kapanewon_hourly,
+tier1_summary.csv,k,int,Ambang suppression,perangkat
+tier1_summary.csv,rows_total,int,Baris sebelum suppression,baris
+tier1_summary.csv,rows_published,int,Baris setelah suppression,baris
+tier1_summary.csv,rows_suppressed_pct,float,Persen baris disembunyikan,%
+tier1_summary.csv,maid_presence_suppressed_pct,float,Persen total n_maids yang berada di baris tersembunyi,%
+tier1_summary.csv,n_cells_published,int,Jumlah sel/kapanewon dengan ≥1 baris terpublikasi,
+od_home_visits_kapanewon_monthly.csv,month,string,Bulan YYYY-MM,
+od_home_visits_kapanewon_monthly.csv,origin_kab_code / origin_kab_kota,string,Kabupaten asal (rumah),
+od_home_visits_kapanewon_monthly.csv,origin_code / origin_kapanewon,string,Kapanewon asal (rumah bulanan),
+od_home_visits_kapanewon_monthly.csv,dest_kab_code / dest_kab_kota,string,Kabupaten tujuan,
+od_home_visits_kapanewon_monthly.csv,dest_code / dest_kapanewon,string,Kapanewon tujuan (siang 08.00–17.59),
+od_home_visits_kapanewon_monthly.csv,n_maids,int,Perangkat berbeda dari asal i yang teramati di tujuan j bulan itu,"pengunjung, bukan perjalanan; ≥5"
+od_home_visits_kapanewon_monthly.csv,reduced_quality,bool,True untuk Maret–April 2022,
+od_origin_homes_monthly.csv,month,string,Bulan YYYY-MM,
+od_origin_homes_monthly.csv,origin_* (4 kolom),string,Identitas kapanewon asal,
+od_origin_homes_monthly.csv,n_homed_maids,int,Perangkat dengan rumah bulanan di kapanewon ini,≥5
+od_origin_homes_monthly.csv,n_homed_maids_daytime,int,"Dari n_homed_maids, yang teramati minimal sekali 08.00–17.59",denominator OD
+od_origin_homes_monthly.csv,reduced_quality,bool,True untuk Maret–April 2022,
+od_summary.csv,k / min_nights,int,Ambang suppression / minimal malam untuk rumah,
+od_summary.csv,od_rows_total / od_rows_published / od_rows_suppressed_pct,int/float,Baris OD sebelum/sesudah suppression,
+od_summary.csv,inter_zonal_flow_kept_pct,float,Persen aliran antarwilayah (i≠j) yang tetap terpublikasi,%
+od_summary.csv,origin_rows_published,int,Baris di od_origin_homes_monthly,
